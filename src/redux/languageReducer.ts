@@ -1,4 +1,4 @@
-interface LanguageState {
+export interface LanguageState {
     language: "en" | "zh",
     languageList: { name: string, code: string }[]
 }
@@ -10,9 +10,17 @@ const defaultState: LanguageState = {
         { name: "英文", code: "en" }
     ]
 }
-
-export default (state = defaultState, action) => {
-
-    return state
+export default (state = defaultState, action:any) => {
+    switch (action.type) {
+        case "change_language":
+          return { ...state, language: action.payload };
+        case "add_language":
+          return {
+            ...state,
+            languageList: [...state.languageList, action.payload],
+          };
+        default:
+          return state;
+      }
 }
 //处理语言的配置信息，返回新的state
