@@ -9,11 +9,11 @@ function App() {
       <BrowserRouter>
       <Switch>
         {/* router路由向下面组件的props中传递了history location match三个属性*/}
-          <Route path="/" component={HomePage} exact/>
-          {/* <Route path="/signIn" render={()=><h1>登录</h1>} /> */}
           <Route path="/signIn" component={SignInPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/detail/:touristRouteId" component={DetailPage}/>
+          <Route path="/" component={HomePage} />
+          {/* <Route path="/signIn" render={()=><h1>登录</h1>} /> */}
           <Route render={()=><h1>404 not found</h1>} />
       </Switch>
       </BrowserRouter>
