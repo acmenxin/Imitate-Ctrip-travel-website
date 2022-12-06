@@ -13,9 +13,11 @@ import sideImage from "../../assets/images/sider_2019_12-09.png";
 import sideImage2 from "../../assets/images/sider_2019_02-04.png";
 import sideImage3 from "../../assets/images/sider_2019_02-04-2.png";
 import styles from "./HomePage.module.css";
- 
-export class HomePage extends React.Component {
+import { withTranslation ,WithTranslation} from "react-i18next"; 
+
+class HomePageComponent extends React.Component<WithTranslation> {
   render() {
+    const {t} = this.props
     return (
       <>
         <Header />
@@ -32,7 +34,7 @@ export class HomePage extends React.Component {
           <ProductCollection
             title={
               <Typography.Title level={3} type="warning">
-                爆款推荐
+                {t("home_page.hot_recommended")}
               </Typography.Title>
             }
             sideImage={sideImage}
@@ -63,3 +65,6 @@ export class HomePage extends React.Component {
     );
   }
 }
+
+
+export const HomePage = withTranslation()(HomePageComponent)
